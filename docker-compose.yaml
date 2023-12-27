@@ -16,6 +16,8 @@ services:
     hostname: librespeed
     cap_drop:
       - ALL
+    networks:
+      - librespeed
 
   prometheus:
     image: prom/prometheus:v2.48.1
@@ -35,6 +37,8 @@ services:
       - librespeed
     cap_drop:
       - ALL
+    networks:
+      - librespeed
 
   grafana:
     image: grafana/grafana:10.1.6
@@ -51,7 +55,11 @@ services:
       - prometheus
     cap_drop:
       - ALL
+    networks:
+      - librespeed
 
 volumes:
   prometheus_data:
   grafana_data:
+networks:
+  librespeed:
