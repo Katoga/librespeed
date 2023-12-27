@@ -19,6 +19,28 @@ services:
     networks:
       - librespeed
 
+  influxdb:
+    image: influxdb:1.8
+    environment:
+      INFLUXDB_REPORTING_DISABLED: 'true'
+    ports:
+      - 8086:8086
+    dns:
+      - 192.168.1.2
+    hostname: influxdb
+    volumes:
+      - type: volume
+        source: influxdb_data
+        target: /var/lib/influxdb
+      - type: bind
+        source: ./influxdb/init_db.iql
+        target: /docker-entrypoint-initdb.d/init_db.iql
+    cap_drop:
+      - ALL
+    user: influxdb
+    networks:
+      - librespeed
+
   prometheus:
     image: prom/prometheus:v2.48.1
     ports:
@@ -35,6 +57,7 @@ services:
         target: /prometheus/
     depends_on:
       - librespeed
+      - influxdb
     cap_drop:
       - ALL
     networks:
@@ -61,5 +84,7 @@ services:
 volumes:
   prometheus_data:
   grafana_data:
+  influxdb_data:
+
 networks:
   librespeed:
