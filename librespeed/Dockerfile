@@ -14,7 +14,7 @@ FROM python:3-alpine3.19 as runner
 
 RUN apk upgrade --no-cache \
   && pip install --no-cache-dir \
-    prometheus-client~=0.19.0
+    prometheus-client~=0.20.0
 
 COPY --from=builder /opt/librespeed/out/librespeed-cli-* /usr/local/bin/librespeed-cli
 
