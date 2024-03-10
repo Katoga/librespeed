@@ -64,7 +64,7 @@ services:
       - librespeed
 
   grafana:
-    image: grafana/grafana:10.3.3
+    image: grafana/grafana:10.4.0
     ports:
       - 192.168.1.1:3000:3000
     dns:
