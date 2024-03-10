@@ -42,7 +42,7 @@ services:
       - librespeed
 
   prometheus:
-    image: prom/prometheus:v2.50.0
+    image: prom/prometheus:v2.50.1
     ports:
       - 192.168.1.1:9090:9090
     dns:
