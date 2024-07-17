@@ -1,4 +1,4 @@
-FROM golang:1.22-alpine3.19 AS builder
+FROM golang:1.22-alpine3.20 AS builder
 
 WORKDIR /opt/librespeed
 ARG librespeed_version
@@ -10,7 +10,7 @@ RUN apk add --no-cache \
   && ./build.sh
 
 
-FROM python:3-alpine3.19 as runner
+FROM python:3-alpine3.20 as runner
 
 RUN apk upgrade --no-cache \
   && pip install --no-cache-dir \
