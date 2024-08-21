@@ -2,6 +2,8 @@ FROM golang:1.23-alpine3.20 AS builder
 
 WORKDIR /opt/librespeed
 ARG librespeed_version
+
+# hadolint ignore=DL3018
 RUN apk add --no-cache \
     bash \
     git \
