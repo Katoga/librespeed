@@ -1,4 +1,4 @@
-FROM golang:1.22-alpine3.20 AS builder
+FROM golang:1.23-alpine3.20 AS builder
 
 WORKDIR /opt/librespeed
 ARG librespeed_version
