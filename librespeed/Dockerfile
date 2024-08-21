@@ -12,7 +12,7 @@ RUN apk add --no-cache \
   && ./build.sh
 
 
-FROM python:3-alpine3.20 as runner
+FROM python:3-alpine3.20 AS runner
 
 RUN apk upgrade --no-cache \
   && pip install --no-cache-dir \
