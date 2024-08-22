@@ -7,6 +7,7 @@ ARG librespeed_version
 RUN apk add --no-cache \
     bash \
     git \
+    upx \
   && git clone https://github.com/librespeed/speedtest-cli . \
   && git reset --hard "v${librespeed_version}" \
   && ./build.sh
