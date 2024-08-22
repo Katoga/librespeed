@@ -10,6 +10,8 @@ RUN apk add --no-cache \
     upx \
   && git clone https://github.com/librespeed/speedtest-cli . \
   && git reset --hard "v${librespeed_version}" \
+  && go get -u \
+  && go mod tidy \
   && ./build.sh
 
 
