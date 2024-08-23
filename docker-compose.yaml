@@ -63,6 +63,8 @@ services:
 
   grafana:
     image: grafana/grafana:11.1.4
+    environment:
+      GF_ANALYTICS_REPORTING_ENABLED: false
     ports:
       - 192.168.1.1:3000:3000
     dns:
