@@ -62,7 +62,7 @@ services:
       - librespeed
 
   grafana:
-    image: grafana/grafana:11.1.4
+    image: grafana/grafana:11.2.0
     environment:
       GF_ANALYTICS_REPORTING_ENABLED: false
       GF_ANALYTICS_CHECK_FOR_UPDATES: false
