@@ -1,18 +1,13 @@
 FROM golang:1.23-alpine3.20 AS builder
 
-WORKDIR /opt/librespeed
 ARG speedtest_cli_version
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache \
-    bash \
     git \
     upx \
-  && git clone https://github.com/librespeed/speedtest-cli . \
-  && git reset --hard "v${speedtest_cli_version}" \
-  && go get -u \
-  && go mod tidy \
-  && ./build.sh
+  && go install "github.com/librespeed/speedtest-cli@v${speedtest_cli_version}" \
+  && upx -9 /go/bin/speedtest-cli
 
 
 FROM python:3-alpine3.20 AS runner
@@ -21,7 +16,7 @@ RUN apk upgrade --no-cache \
   && pip install --no-cache-dir \
     prometheus-client~=0.20.0
 
-COPY --from=builder /opt/librespeed/out/librespeed-cli-* /usr/local/bin/librespeed-cli
+COPY --from=builder /go/bin/speedtest-cli /usr/local/bin/speedtest-cli
 
 COPY ./exporter/ /opt/librespeed/exporter/
 
