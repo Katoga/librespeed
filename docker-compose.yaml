@@ -4,7 +4,7 @@ services:
       network: host
       context: ./librespeed
       args:
-        librespeed_version: 1.0.10
+        speedtest_cli_version: 1.0.10
     command:
       - '51423'
     ports:

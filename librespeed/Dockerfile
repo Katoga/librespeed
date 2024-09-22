@@ -1,7 +1,7 @@
 FROM golang:1.23-alpine3.20 AS builder
 
 WORKDIR /opt/librespeed
-ARG librespeed_version
+ARG speedtest_cli_version
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache \
@@ -9,7 +9,7 @@ RUN apk add --no-cache \
     git \
     upx \
   && git clone https://github.com/librespeed/speedtest-cli . \
-  && git reset --hard "v${librespeed_version}" \
+  && git reset --hard "v${speedtest_cli_version}" \
   && go get -u \
   && go mod tidy \
   && ./build.sh
