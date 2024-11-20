@@ -35,4 +35,4 @@ FROM gcr.io/distroless/static-debian12:nonroot AS runner
 COPY --from=builder-speedtest-cli /go/bin/speedtest-cli /usr/bin/speedtest-cli
 COPY --from=builder-librespeed_exporter /go/bin/librespeed_exporter /usr/bin/librespeed_exporter
 
-CMD [ "/usr/bin/librespeed_exporter", "--data-retriever-command", "/usr/bin/speedtest-cli", "--librespeed.server", "85" ]
+CMD [ "/usr/bin/librespeed_exporter", "--data-retriever-command", "/usr/bin/speedtest-cli", "--librespeed.server", "79" ]
